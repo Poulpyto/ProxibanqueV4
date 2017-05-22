@@ -2,7 +2,9 @@ package com.huios.service;
 
 import java.util.Collection;
 
-import com.huios.dao.DaoImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.huios.dao.IDao;
 import com.huios.metier.Client;
 import com.huios.metier.Compte;
@@ -10,11 +12,11 @@ import com.huios.metier.CompteCourant;
 import com.huios.metier.CompteEpargne;
 import com.huios.metier.Conseiller;
 
-
+@Service
 public class ServiceImpl implements IServiceConseiller {
 
-	// @Inject
-	private IDao dao = new DaoImpl();
+	@Autowired
+	private IDao dao;
 
 	@Override
 	public Conseiller verificationLogin(String login, String pwd) {
