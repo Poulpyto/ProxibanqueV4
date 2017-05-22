@@ -3,21 +3,22 @@ package com.huios.mbeans;
 import java.util.Collection;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.context.annotation.SessionScope;
 
 import com.huios.metier.Compte;
 import com.huios.service.IServiceConseiller;
-import com.huios.service.ServiceImpl;
 
 
 
-@ManagedBean
-@SessionScoped
+@Controller
+@SessionScope
 public class VirementBean {
-
-	private IServiceConseiller service = new ServiceImpl();
+	@Autowired
+	private IServiceConseiller service;
 	private Compte compteDebiteur;
 	private Compte compteCrediteur;
 	private long idCompteCrediteur;

@@ -3,20 +3,21 @@ package com.huios.mbeans;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.context.annotation.SessionScope;
 
 import com.huios.metier.Compte;
 import com.huios.service.IServiceConseiller;
-import com.huios.service.ServiceImpl;
 
 
-@ManagedBean
-@SessionScoped
+@Controller
+@SessionScope
 public class CompteBean {
-	
-	private IServiceConseiller service = new ServiceImpl(); 
+	@Autowired
+	private IServiceConseiller service;
 	
 	private Collection<Compte> comptes = new ArrayList<Compte>();
 	

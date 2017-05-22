@@ -1,28 +1,28 @@
 package com.huios.mbeans;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.annotation.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.context.annotation.SessionScope;
 
 import com.huios.metier.Client;
 import com.huios.service.IServiceConseiller;
-import com.huios.service.ServiceImpl;
 
 
 
 
-@ManagedBean
-@SessionScoped
+@Controller
+@SessionScope
 public class ClientBean {
-	
-	private IServiceConseiller service = new ServiceImpl(); 
-	
-	private Collection<Client> clients = new ArrayList<Client>();
-	
-	private Client client = new Client();
+	@Autowired
+	private IServiceConseiller service; 
+	@Autowired
+	private Collection<Client> clients;
+	@Autowired
+	private Client client;
 	
 	@ManagedProperty(value="#{conseillerBean}")
 	private ConseillerBean conseillerBean;
@@ -47,9 +47,10 @@ public class ClientBean {
 	}
 
 	public Client getClient() {
+		if (client == null)
+			client = new Client();
 		return client;
 	}
-
 	public void setClient(Client client) {
 		this.client = client;
 	}

@@ -1,23 +1,24 @@
 package com.huios.mbeans;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.context.annotation.SessionScope;
 
 import com.huios.metier.Conseiller;
 import com.huios.service.IServiceConseiller;
-import com.huios.service.ServiceImpl;
 
 
-//@Named
-@ManagedBean(eager=true)
-@SessionScoped
+@Controller
+@SessionScope
 public class ConseillerBean {
 
-	
-	private IServiceConseiller service = new ServiceImpl();
-	private Conseiller conseiller = new Conseiller();
+	@Autowired
+	private IServiceConseiller service;
+	@Autowired
+	private Conseiller conseiller;
 
 	
 	
