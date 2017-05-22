@@ -1,8 +1,5 @@
 /**
- * 
- */
-/**
- * @author Stagiaire
+ * Couche metier
  *
  */
 package com.huios.metier;
